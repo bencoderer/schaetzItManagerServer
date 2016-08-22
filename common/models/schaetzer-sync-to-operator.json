@@ -1,0 +1,21 @@
+{
+  "name": "SchaetzerSyncToOperator",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "operatorKey": {
+      "type": "string",
+      "required": true
+    },
+    "sentToOperatorDate": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

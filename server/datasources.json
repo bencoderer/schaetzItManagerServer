@@ -8,5 +8,9 @@
     "name": "mongodbsvr",
     "user": "",
     "connector": "mongodb"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
   }
 }

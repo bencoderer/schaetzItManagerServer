@@ -16,5 +16,17 @@
   "Schaetzer": {
     "dataSource": "mongodbsvr",
     "public": true
+  },
+  "Operator": {
+    "dataSource": "mongodbsvr",
+    "public": true
+  },
+  "Schaetzung": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "SchaetzerSyncToOperator": {
+    "dataSource": "transient",
+    "public": false
   }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "Schaetzung",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "schaetzwert": {
+      "type": "number",
+      "required": true
+    },
+    "sortorder": {
+      "type": "number",
+      "required": true
+    },
+    "indate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
