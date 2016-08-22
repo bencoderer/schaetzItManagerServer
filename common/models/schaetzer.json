@@ -23,7 +23,26 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "schaetzungen": {
+      "type": "embedsMany",
+      "model": "Schaetzung",
+      "property": "schaetzungList",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "sync": {
+      "type": "embedsMany",
+      "model": "SchaetzerSyncToOperator",
+      "property": "syncToOperatorList",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+  },
   "acls": [],
   "methods": {}
 }
