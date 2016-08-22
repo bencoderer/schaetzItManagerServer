@@ -1,0 +1,12 @@
+{
+  "mongodbsvr": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost/schaetzit",
+    "database": "schaetzit",
+    "password": "",
+    "name": "mongodbsvr",
+    "user": "",
+    "connector": "mongodb"
+  }
+}

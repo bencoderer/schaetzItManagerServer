@@ -1,0 +1,29 @@
+{
+  "name": "Schaetzer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "operatorKey": {
+      "type": "string",
+      "required": true
+    },
+    "nameAndAddress": {
+      "type": "string",
+      "required": true
+    },
+    "idInOperatorDb": {
+      "type": "string",
+      "required": true
+    },
+    "indate": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
