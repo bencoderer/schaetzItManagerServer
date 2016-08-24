@@ -9,6 +9,17 @@
     "user": "",
     "connector": "mongodb"
   },
+   "mysqldbsvr": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "mongodb://localhost/schaetzit",
+    "database": "schaetzitdb",
+    "password": "",
+    "name": "mysqldbsvr",
+    "user": "",
+    "connector": "mysql"
+  },
+  
   "transient": {
     "name": "transient",
     "connector": "transient"

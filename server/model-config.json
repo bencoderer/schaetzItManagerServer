@@ -14,19 +14,19 @@
     ]
   },
   "Schaetzer": {
-    "dataSource": "mongodbsvr",
+    "dataSource": "mysqldbsvr",
     "public": true
   },
   "Operator": {
-    "dataSource": "mongodbsvr",
+    "dataSource": "mysqldbsvr",
     "public": true
   },
   "Schaetzung": {
-    "dataSource": "transient",
+    "dataSource": "mysqldbsvr",
     "public": false
   },
   "SchaetzerSyncToOperator": {
-    "dataSource": "transient",
+    "dataSource": "mysqldbsvr",
     "public": false
   }
 }
