@@ -30,7 +30,7 @@
       "property": "schaetzungList",
       "options": {
         "validate": true,
-        "forceId": true
+        "forceId": false
       }
     },
     "sync": {
