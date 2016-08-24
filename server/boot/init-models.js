@@ -3,6 +3,7 @@ var async = require('async');
 module.exports = function(app) {
   //data sources
   var mongodbsvr = app.dataSources.mongodbsvr;
+  var mysqldbsvr = app.dataSources.mysqldbsvr;
   
   //create all models
   async.parallel({
@@ -16,7 +17,7 @@ module.exports = function(app) {
   });
   //create operators
   function createOperators(cb) {
-    mongodbsvr.automigrate('Operator', function(err) {
+    mysqldbsvr.automigrate('Operator', function(err) {
       if (err) return cb(err);
       var Operator = app.models.Operator;
       Operator.create([
@@ -28,7 +29,7 @@ module.exports = function(app) {
   
   //create schaetzer
   function createSchaetzers(cb) {
-    mongodbsvr.automigrate('Schaetzer', function(err) {
+    mysqldbsvr.automigrate('Schaetzer', function(err) {
       if (err) return cb(err);
     });
   }
