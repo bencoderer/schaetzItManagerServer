@@ -9,6 +9,8 @@ module.exports = function(app) {
   async.parallel({
     operators: async.apply(createOperators),
     schaetzers: async.apply(createSchaetzers),
+    schaetzungen: async.apply(createSchaetzungen),
+    schaetzerSyncToOperators: async.apply(createSchaetzerSyncToOperators),
   }, function(err, results) {
     if (err) throw err;
     
@@ -30,6 +32,20 @@ module.exports = function(app) {
   //create schaetzer
   function createSchaetzers(cb) {
     mysqldbsvr.automigrate('Schaetzer', function(err) {
+      if (err) return cb(err);
+    });
+  }
+  
+  //create schaetzung
+  function createSchaetzungen(cb) {
+    mysqldbsvr.automigrate('Schaetzung', function(err) {
+      if (err) return cb(err);
+    });
+  }
+  
+  //create schaetzung
+  function createSchaetzerSyncToOperators(cb) {
+    mysqldbsvr.automigrate('SchaetzerSyncToOperator', function(err) {
       if (err) return cb(err);
     });
   }
