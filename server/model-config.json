@@ -22,7 +22,7 @@
     "public": true
   },
   "Schaetzung": {
-    "dataSource": "mysqldbsvr",
+    "dataSource": "transient",
     "public": false
   },
   "SchaetzerSyncToOperator": {

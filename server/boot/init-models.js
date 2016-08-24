@@ -9,7 +9,7 @@ module.exports = function(app) {
   async.parallel({
     operators: async.apply(createOperators),
     schaetzers: async.apply(createSchaetzers),
-    schaetzungen: async.apply(createSchaetzungen),
+    //schaetzungen: async.apply(createSchaetzungen), //be embedded
     schaetzerSyncToOperators: async.apply(createSchaetzerSyncToOperators),
   }, function(err, results) {
     if (err) throw err;

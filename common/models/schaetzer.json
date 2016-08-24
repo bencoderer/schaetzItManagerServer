@@ -25,7 +25,7 @@
   "validations": [],
   "relations": {
     "schaetzungen": {
-      "type": "hasMany",
+      "type": "embedsMany",
       "model": "Schaetzung",
       "property": "schaetzungList",
       "options": {
