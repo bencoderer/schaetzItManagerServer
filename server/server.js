@@ -1,3 +1,4 @@
+/*eslint-env node */
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
@@ -40,7 +41,7 @@ app.middleware('initial', function logResponse(req, res, next) {
   // install a listener for when the response is finished
   res.on('finish', function() { // the request was handled, print the log entry
     var duration = new Date - start;
-    log(req.method, req.originalUrl, res.statusCode, duration + 'ms', {
+    console.log(req.method, req.originalUrl, res.statusCode, duration + 'ms', {
       lbHttpMethod:req.method,
       lbUrl:req.originalUrl,
       lbbody:req.body,
