@@ -25,3 +25,31 @@ boot(app, __dirname, function(err) {
   if (require.main === module)
     app.start();
 });
+
+
+//Sample # 2 - bit more advanced
+// Also helps track reponse time for all URLs
+app.middleware('initial', function logResponse(req, res, next) {
+  // http://www.senchalabs.org/connect/responseTime.html
+  var start = new Date;
+  if (res._responseTime) {
+    return next();
+  }
+  res._responseTime = true;
+
+  // install a listener for when the response is finished
+  res.on('finish', function() { // the request was handled, print the log entry
+    var duration = new Date - start;
+    log(req.method, req.originalUrl, res.statusCode, duration + 'ms', {
+      lbHttpMethod:req.method,
+      lbUrl:req.originalUrl,
+      lbbody:req.body,
+      lbStatusCode:res.statusCode,
+      lbResponseTime:duration
+    });
+  });
+
+  // resume the routing pipeline,
+  // let other middleware to actually handle the request
+  next();
+});
