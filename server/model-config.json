@@ -27,6 +27,6 @@
   },
   "SchaetzerSyncToOperator": {
     "dataSource": "mysqldbsvr",
-    "public": false
+    "public": true
   }
 }
