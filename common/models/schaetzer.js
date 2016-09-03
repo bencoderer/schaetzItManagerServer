@@ -31,7 +31,6 @@ module.exports = function(Schaetzer) {
 
 
     Schaetzer.isSynced = function(id, opKey, cb) {
-	  console.log(JSON.stringify(Schaetzer.app.models)); 
       //var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
 
     
@@ -49,6 +48,7 @@ module.exports = function(Schaetzer) {
       var result = "";
       
       if (schaetzer != null) {
+      	console.log(JSON.stringify(schaetzer));
       	schaetzer.sync(null, function(err, syncArray) {
       
 		    console.log(JSON.stringify(syncArray)); 
@@ -80,7 +80,7 @@ module.exports = function(Schaetzer) {
     	  {arg: 'id', type: 'string', required: true},
     	  {arg: 'opKey', type: 'string', required: true}
     	],
-        http: {path: ':id/isSynced/:opKey', verb: 'post'},
+        http: {path: '/:id/isSynced/:opKey', verb: 'post'},
         returns: { arg: 'sentToOperatorDate', type: 'string'}
     	});	
 };
