@@ -7,17 +7,19 @@ module.exports = function(Schaetzer) {
 
 	  SyncModel.find(
 	  {
-	  	 where: {and: [  {operatorKey: {neq: opKey}}
+	  	 where: {and: [  {operatorKey: opKey}
 	  	               , {sentToOperatorDate: null}]}
 	    ,include : {relation: "schaetzer"}	               
 	  },
 	  function(err, syncArray) { 
 	    console.log(JSON.stringify(syncArray)); 
             var result = [];
-	    if (syncArray !== null) {
+	    if (syncArray) {
               result = syncArray.map(function(currentValue) {
-    		     console.log(JSON.stringify(currentValue)); 
-                     return currentValue.schaetzer;
+    		     console.log("inArray: " + JSON.stringify(currentValue)); 
+                     console.log("");
+                     console.log(currentValue.schaetzer()); 
+                     return currentValue.schaetzer();
 	    	});
 	    }
 	    cb(err, result);
