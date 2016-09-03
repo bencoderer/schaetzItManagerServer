@@ -37,7 +37,7 @@ module.exports = function(Schaetzer) {
 	  var schaetzer = Schaetzer.findById(id, {
 	   
 	    include : {
-	    	relation: "sync",	               
+	    	relation: "syncToOperatorList",	               
 	    
 	        scope: {
 	          where: {operatorKey: opKey}
@@ -49,7 +49,7 @@ module.exports = function(Schaetzer) {
       
       if (schaetzer != null) {
       	console.log(JSON.stringify(schaetzer));
-      	schaetzer.sync(null, function(err, syncArray) {
+      	schaetzer.syncToOperatorList(null, function(err, syncArray) {
       
 		    console.log(JSON.stringify(syncArray)); 
 
