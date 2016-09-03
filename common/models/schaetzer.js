@@ -76,8 +76,11 @@ module.exports = function(Schaetzer) {
     Schaetzer.remoteMethod(
     	'isSynced', 
     	{
-    	accepts: {arg: 'opKey', type: 'string', required: true},
-        http: {path: 'Schaetzers/:id/isSynced/:opKey', verb: 'post'},
+    	accepts: [
+    	  {arg: 'id', type: 'string', required: true},
+    	  {arg: 'opKey', type: 'string', required: true}
+    	],
+        http: {path: ':id/isSynced/:opKey', verb: 'post'},
         returns: { arg: 'sentToOperatorDate', type: 'string'}
     	});	
 };
