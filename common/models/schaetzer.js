@@ -19,8 +19,11 @@ module.exports = function(Schaetzer) {
     		     console.log("inArray: " + JSON.stringify(currentValue)); 
                      console.log("");
                      console.log(currentValue.schaetzer()); 
-                     return currentValue.schaetzer();
-	    	});
+                     var schaetzer = currentValue.schaetzer()
+                     if (schaetzer.operatorKey != opKey) {
+                        return schaetzer;
+                     }
+              }).filter(function(item) { return item != null});
 	    }
 	    cb(err, result);
 	  });    
