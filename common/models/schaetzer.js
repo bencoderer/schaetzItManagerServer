@@ -48,7 +48,7 @@ module.exports = function(Schaetzer) {
 
 	      if (schaetzer != null) {
 	      	console.log(JSON.stringify(schaetzer));
-	      	schaetzer.syncToOperatorList(null, function(err, syncArray) {
+	      	schaetzer.sync(null, function(err, syncArray) {
 	      
 			    console.log(JSON.stringify(syncArray)); 
 	
