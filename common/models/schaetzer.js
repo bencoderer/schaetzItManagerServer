@@ -3,7 +3,7 @@ module.exports = function(Schaetzer) {
 
 	Schaetzer.notSyncedTo = function(opKey, cb) {
 	  console.log(JSON.stringify(Schaetzer.app.models)); 
-          var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
+      var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
 
 	  SyncModel.find(
 	  {
@@ -29,6 +29,42 @@ module.exports = function(Schaetzer) {
 	  });    
 	};
 
+
+    Schaetzer.isSynced = function(id, opKey, cb) {
+	  console.log(JSON.stringify(Schaetzer.app.models)); 
+      //var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
+
+    
+	  var schaetzer = Schaetzer.findById(id, {
+	   
+	    include : {
+	    	relation: "sync",	               
+	    
+	        scope: {
+	          where: {operatorKey: opKey}
+	        }
+	      }
+	  });
+
+      var result = "";
+      
+      if (schaetzer != null) {
+      	schaetzer.sync(null, function(err, syncArray) {
+      
+		    console.log(JSON.stringify(syncArray)); 
+
+		    if (syncArray) {		    
+				syncArray[0].sentToOperatorDate = new Date();
+				syncArray.save();
+				result = syncArray[0].sentToOperatorDate.toISOString();
+		    }
+		    cb(err, result);
+		  });    
+	  }
+	};
+
+
+
     Schaetzer.remoteMethod(
     	'notSyncedTo', 
     	{
@@ -37,4 +73,11 @@ module.exports = function(Schaetzer) {
         returns: { type: 'array', root:true}
     	});			
 
+    Schaetzer.remoteMethod(
+    	'isSynced', 
+    	{
+    	accepts: {arg: 'opKey', type: 'string', required: true},
+        http: {path: 'Schaetzers/:id/isSynced/:opKey', verb: 'post'},
+        returns: { arg: 'sentToOperatorDate', type: 'string'}
+    	});	
 };
