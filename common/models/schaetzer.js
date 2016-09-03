@@ -33,34 +33,37 @@ module.exports = function(Schaetzer) {
     Schaetzer.isSynced = function(id, opKey, cb) {
       //var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
 
+      var result = "";
     
 	  var schaetzer = Schaetzer.findById(id, {
 	   
 	    include : {
-	    	relation: "syncToOperatorList",	               
+	    	relation: "sync",	               
 	    
 	        scope: {
 	          where: {operatorKey: opKey}
 	        }
 	      }
+	  }, function(err, schaetzer) {
+
+	      if (schaetzer != null) {
+	      	console.log(JSON.stringify(schaetzer));
+	      	schaetzer.syncToOperatorList(null, function(err, syncArray) {
+	      
+			    console.log(JSON.stringify(syncArray)); 
+	
+			    if (syncArray) {		    
+					syncArray[0].sentToOperatorDate = new Date();
+					syncArray.save();
+					result = syncArray[0].sentToOperatorDate.toISOString();
+			    }
+			    cb(err, result);
+			  });    
+		  }
+		  else {
+		  	cb(err, null);
+		  }
 	  });
-
-      var result = "";
-      
-      if (schaetzer != null) {
-      	console.log(JSON.stringify(schaetzer));
-      	schaetzer.syncToOperatorList(null, function(err, syncArray) {
-      
-		    console.log(JSON.stringify(syncArray)); 
-
-		    if (syncArray) {		    
-				syncArray[0].sentToOperatorDate = new Date();
-				syncArray.save();
-				result = syncArray[0].sentToOperatorDate.toISOString();
-		    }
-		    cb(err, result);
-		  });    
-	  }
 	};
 
 
