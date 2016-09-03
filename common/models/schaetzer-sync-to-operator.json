@@ -1,6 +1,6 @@
 {
   "name": "SchaetzerSyncToOperator",
-  "base": "Model",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -18,8 +18,9 @@
   "relations": {
     "schaetzer": {
       "type": "belongsTo",
-      "model": "Schaetzer"
-    }
+      "model": "Schaetzer",
+      "foreignKey": "schaetzerId"     
+}
   },
   "acls": [],
   "methods": {}
