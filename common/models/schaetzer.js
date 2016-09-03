@@ -54,7 +54,7 @@ module.exports = function(Schaetzer) {
 	
 			    if (syncArray) {		    
 					syncArray[0].sentToOperatorDate = new Date();
-					syncArray.save();
+					syncArray[0].save();
 					result = syncArray[0].sentToOperatorDate.toISOString();
 			    }
 			    cb(err, result);
