@@ -6,9 +6,10 @@ module.exports = function(Schaetzer) {
 
 	  SyncModel.find(
 	  {
-	  	 where: {and: [{operatorKey: {neq: opKey}
-	  	 ,include : {relation: "schaetzers"}
-	  }, {sentToOperatorDate: null}]}},
+	  	 where: {and: [  {operatorKey: {neq: opKey}}
+	  	               , {sentToOperatorDate: null}]}
+	    ,include : {relation: "schaetzer"}	               
+	  },
 	  function(err, syncArray) { 
 	    var result = [];
 	    if (syncArray !== null) {
