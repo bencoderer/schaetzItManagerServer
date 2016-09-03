@@ -16,14 +16,14 @@ module.exports = function(Schaetzer) {
             var result = [];
 	    if (syncArray) {
               result = syncArray.map(function(currentValue) {
-    		     console.log("inArray: " + JSON.stringify(currentValue)); 
-                     console.log("");
-                     console.log(currentValue.schaetzer()); 
-                     var schaetzer = currentValue.schaetzer()
-                     if (schaetzer.operatorKey != opKey) {
-                        return schaetzer;
-                     }
-              }).filter(function(item) { return item != null});
+		         //console.log("inArray: " + JSON.stringify(currentValue)); 
+                 //console.log("");
+                 //console.log(currentValue.schaetzer()); 
+                 var schaetzer = currentValue.schaetzer();
+                 if (schaetzer.operatorKey !== opKey) {
+                    return schaetzer;
+                 }
+              }).filter(function(item) { return item != null;});
 	    }
 	    cb(err, result);
 	  });    
