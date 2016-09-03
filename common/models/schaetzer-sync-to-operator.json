@@ -18,8 +18,9 @@
   "relations": {
     "schaetzer": {
       "type": "belongsTo",
-      "model": "Schaetzer"
-    }
+      "model": "Schaetzer",
+      "foreignKey": "schaetzerId"     
+}
   },
   "acls": [],
   "methods": {}

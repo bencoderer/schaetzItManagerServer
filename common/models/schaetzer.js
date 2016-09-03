@@ -2,18 +2,21 @@
 module.exports = function(Schaetzer) {
 
 	Schaetzer.notSyncedTo = function(opKey, cb) {
-	  var SyncModel = Schaetzer.app.models.SyncSchaetzerToOperator;
+	  console.log(JSON.stringify(Schaetzer.app.models)); 
+          var SyncModel = Schaetzer.app.models.SchaetzerSyncToOperator;
 
 	  SyncModel.find(
 	  {
 	  	 where: {and: [{operatorKey: {neq: opKey}
-	  	 ,include : {relation: "schaetzers"}
+	  	 ,include : {relation: "schaetzer"}
 	  }, {sentToOperatorDate: null}]}},
 	  function(err, syncArray) { 
-	    var result = [];
+	    console.log(JSON.stringify(syncArray)); 
+            var result = [];
 	    if (syncArray !== null) {
-	    	result = syncArray.map(function(currentValue) {
-    		    return currentValue.schaetzer;
+              result = syncArray.map(function(currentValue) {
+    		     console.log(JSON.stringify(currentValue)); 
+                     return currentValue.schaetzer;
 	    	});
 	    }
 	    cb(err, result);
@@ -25,7 +28,7 @@ module.exports = function(Schaetzer) {
     	{
     	accepts: {arg: 'opKey', type: 'string', required: true},
         http: {path: '/notSyncedTo/:opKey', verb: 'get'},
-        returns: {arg: 'schaetzerList', type: 'Array', root:true}
+        returns: { type: 'array', root:true}
     	});			
 
 };

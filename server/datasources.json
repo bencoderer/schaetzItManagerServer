@@ -9,14 +9,15 @@
     "user": "",
     "connector": "mongodb"
   },
-   "mysqldbsvr": {
-    "host": "localhost",
+
+  "mysqldbsvr": {
+    "host": "10.0.0.9",
     "port": 3306,
-    "url": "mongodb://localhost/schaetzit",
     "database": "schaetzitdb",
-    "password": "",
+    "password": "schaetzer",
     "name": "mysqldbsvr",
-    "user": "",
+    "username": "schaetzituser",
+    "debug": true,
     "connector": "mysql"
   },
   
