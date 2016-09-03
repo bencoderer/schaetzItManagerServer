@@ -15,7 +15,12 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "schaetzer": {
+      "type": "belongsTo",
+      "model": "Schaetzer"
+    }
+  },
   "acls": [],
   "methods": {}
 }
