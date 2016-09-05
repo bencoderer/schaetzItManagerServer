@@ -19,33 +19,36 @@ module.exports = function(app) {
   });
   //create operators
   function createOperators(cb) {
-    mysqldbsvr.automigrate('Operator', function(err) {
+    mysqldbsvr.autoupdate('Operator', function(err) {
       if (err) return cb(err);
       var Operator = app.models.Operator;
-      Operator.create([
-        {operatorKey: 'OP1', name: 'Tablet 1'},
-        {operatorKey: 'OP2', name: 'Tablet 2'}
-      ], cb);
+      Operator.findOrCreate({where: {operatorKey : 'OP1'}}, 
+        {operatorKey: 'OP1', name: 'Tablet 1'}
+      , function(err) {
+           if (err) return cb(err);
+           Operator.findOrCreate({where:{operatorKey : 'OP2'}},
+            {operatorKey: 'OP2', name : 'Tablet 2'}, cb); 
+        });
     });
   }
   
   //create schaetzer
   function createSchaetzers(cb) {
-    mysqldbsvr.automigrate('Schaetzer', function(err) {
+    mysqldbsvr.autoupdate('Schaetzer', function(err) {
       if (err) return cb(err);
     });
   }
   
   //create schaetzung
   function createSchaetzungen(cb) {
-    mysqldbsvr.automigrate('Schaetzung', function(err) {
+    mysqldbsvr.autoupdate('Schaetzung', function(err) {
       if (err) return cb(err);
     });
   }
   
   //create schaetzung
   function createSchaetzerSyncToOperators(cb) {
-    mysqldbsvr.automigrate('SchaetzerSyncToOperator', function(err) {
+    mysqldbsvr.autoupdate('SchaetzerSyncToOperator', function(err) {
       if (err) return cb(err);
     });
   }
