@@ -1,14 +1,4 @@
 {
-  "mongodbsvr": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "mongodb://localhost/schaetzit",
-    "database": "schaetzit",
-    "password": "",
-    "name": "mongodbsvr",
-    "user": "",
-    "connector": "mongodb"
-  },
 
   "mysqldbsvr": {
     "host": "10.0.0.9",
@@ -17,7 +7,7 @@
     "password": "schaetzer",
     "name": "mysqldbsvr",
     "username": "schaetzituser",
-    "debug": true,
+    "debug": false,
     "connector": "mysql"
   },
   

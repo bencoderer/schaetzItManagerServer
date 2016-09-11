@@ -2,7 +2,6 @@
 var async = require('async');
 module.exports = function(app) {
   //data sources
-  var mongodbsvr = app.dataSources.mongodbsvr;
   var mysqldbsvr = app.dataSources.mysqldbsvr;
   
   //create all models
